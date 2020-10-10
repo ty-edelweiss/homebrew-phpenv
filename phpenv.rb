@@ -45,7 +45,10 @@ class Phpenv < Formula
       s.gsub! /^(\s*)(\.\/configure.+)$/, %Q(\\1YACC="$(brew --prefix bison)/bin/bison" \\2)
     end
 
-    prefix.install ["bin", "completions", "libexec", "phpenv.d", "plugins"]
+    prefix.install Dir["*"]
+    %w[phpenv-install phpenv-uninstall phpenv-update php-build].each do |cmd|
+      bin.install_symlink "#{prefix}/plugins/php-build/bin/#{cmd}"
+    end
   end
 
   test do
