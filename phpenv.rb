@@ -45,7 +45,7 @@ class Phpenv < Formula
       s.gsub! /^(\s*)(\.\/configure.+)$/, %Q(\\1YACC="$(brew --prefix bison)/bin/bison" \\2)
     end
 
-    prefix.install ["bin", "completions", "libexec"]
+    prefix.install ["bin", "completions", "libexec", "phpenv.d", "plugins"]
   end
 
   test do
