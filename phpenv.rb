@@ -24,10 +24,6 @@ class Phpenv < Formula
   depends_on "libiconv"
   depends_on "libedit"
 
-  resource "php-build" do
-    head "https://github.com/php-build/php-build.git"
-  end
-
   def install
     if build.head?
       # Record exact git revision for `phpbenv --version` output
@@ -35,8 +31,6 @@ class Phpenv < Formula
       inreplace "libexec/phpenv---version", /^(version=)"([^"]+)"/,
                                             %Q(\\1"\\2-g#{git_revision}")
     end
-
-    (prefix/"plugins").install resource("php-build")
 
     opt = "#{HOMEBREW_PREFIX}/opt"
     inreplace "plugins/php-build/default_configure_options" do |s|
