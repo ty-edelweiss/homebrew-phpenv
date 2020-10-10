@@ -33,7 +33,7 @@ class Phpenv < Formula
     end
 
     opt = "#{HOMEBREW_PREFIX}/opt"
-    inreplace "plugins/php-build/default_configure_options" do |s|
+    inreplace "plugins/php-build/share/php-build/default_configure_options" do |s|
       s.gsub! /^(--with-zlib-dir).*$/, %Q(\\1=#{opt}/zlib)
       s.gsub! /^(--with-bz2).*$/, %Q(\\1=#{opt}/bzip2)
       s.gsub! /^(--with-curl).*$/, %Q(\\1=#{opt}/curl)
